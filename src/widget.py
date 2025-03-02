@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from src import masks
 
 
@@ -18,3 +20,10 @@ def mask_account_card(given_number: str) -> str:
         return f"{' '.join(num)}"
     else:
         return "Вы ввели некорректное значение"
+
+
+def get_date(date: str) -> str:
+    """Функция, возвращающая дату в формате ДД.ММ.ГГГГ"""
+
+    date_converted = datetime.fromisoformat(date)
+    return date_converted.strftime("%d.%m.%Y")
