@@ -51,7 +51,7 @@ def get_date(date: str) -> str:
 from datetime import datetime
 
 
-def filter_by_state(dicts: list, state: str = "EXECUTED") -> list:
+def processing.filter_by_state(dicts: list, state: str = "EXECUTED") -> list:
     """Возвращает все словари с нужным значением ключа 'state'"""
 
     needed_list = []

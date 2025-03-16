@@ -5,6 +5,11 @@ from src import masks
 
 def mask_account_card(given_number: str) -> str:
     """Функция, возвращающая замаскированный номер карты/счета"""
+    if not given_number:
+        raise ValueError("Номер не может быть пустым")
+
+    if not isinstance(given_number, str):
+        raise TypeError("Передан некорректный тип данных")
 
     num = given_number.split(" ")
 
@@ -18,12 +23,18 @@ def mask_account_card(given_number: str) -> str:
         num[-1] = masked_number
 
         return f"{' '.join(num)}"
-    else:
-        return "Вы ввели некорректное значение"
 
 
 def get_date(date: str) -> str:
     """Функция, возвращающая дату в формате ДД.ММ.ГГГГ"""
+    if not date:
+        raise ValueError("Строка даты не может быть пустой")
 
-    date_converted = datetime.fromisoformat(date)
-    return date_converted.strftime("%d.%m.%Y")
+    if not isinstance(date, str):
+        raise TypeError("Некорректный тип данных")
+
+    try:
+        date_converted = datetime.fromisoformat(date)
+        return date_converted.strftime("%d.%m.%Y")
+    except ValueError:
+        raise ValueError("Введенное значение некорректно")
