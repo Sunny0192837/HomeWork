@@ -28,7 +28,7 @@ def test_mask_account_card_invalid_type():
 
 def test_mask_account_card_empty_value():
     with pytest.raises(ValueError):
-        widget.mask_account_card('')
+        widget.mask_account_card("")
 
 
 def test_get_date_correct():
@@ -45,6 +45,7 @@ def test_get_date_invalid_format():
 def test_get_date_empty_string():
     with pytest.raises(ValueError):
         widget.get_date("")
+
 
 def test_get_date_invalid_type():
     with pytest.raises(TypeError):

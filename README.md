@@ -74,3 +74,28 @@ def sort_by_date(dicts: list, reverse: bool = True) -> list:
 
     return sorted_list
 ```
+## Тестирование:
+Пакет tests содержит тестовые модули:
++test_masks
++test_proccessing
++test_widget
+Пример тестовой функции c параметризацией:
+```commandline
+@pytest.mark.parametrize(
+    "card_number, error_type", [(123, TypeError), ("123412341234", ValueError), ("123412341234word", ValueError)]
+)
+def test_get_mask_card_number_errors(card_number, error_type):
+    with pytest.raises(error_type):
+        masks.get_mask_card_number(card_number)
+```
+Также в пакете содержится файл conftest, содержащий фикстуры. Пример фикстуры:
+```commandline
+@pytest.fixture
+def dicts_list():
+    return [
+        {"id": 41428829, "state": "EXECUTED", "date": "2019-07-03T18:35:29.512364"},
+        {"id": 939719570, "date": "2018-06-30T02:08:58.425572"},
+        {"id": 594226727, "state": "CANCELED", "date": "2018-09-12T21:27:25.241689"},
+        {"id": 615064591, "state": "CANCELED", "date": "2018-10-14T08:21:33.419441"},
+    ]
+```
